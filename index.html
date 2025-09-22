@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Stratus — Weather Intelligence</title>
+  <meta name="color-scheme" content="dark light" />
+  <meta name="theme-color" content="#0B0F14" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app" id="app" aria-busy="true">
+    <header class="topbar" role="banner">
+      <div class="brand">
+        <img src="assets/logo.svg" alt="" class="logo" width="28" height="28" />
+        <h1>Stratus</h1>
+      </div>
+      <div class="top-actions">
+        <button id="geoBtn" class="icon-btn" aria-label="Use my location" title="Use my location">
+          <span class="i i-geo"></span>
+        </button>
+        <div class="unit-toggle" role="group" aria-label="Temperature units">
+          <button id="unitC" class="chip active" aria-pressed="true">°C</button>
+          <button id="unitF" class="chip" aria-pressed="false">°F</button>
+        </div>
+      </div>
+    </header>
+
+    <section class="search-area" role="search">
+      <div class="searchbox">
+        <span class="i i-search"></span>
+        <input id="q" type="search" placeholder="Search city or place…" autocomplete="off" aria-label="Search city" />
+        <button id="clearBtn" class="icon-btn" aria-label="Clear search" hidden>
+          <span class="i i-close"></span>
+        </button>
+      </div>
+      <ul id="suggestions" class="suggestions" role="listbox" aria-label="Suggestions"></ul>
+    </section>
+
+    <main class="layout" id="layout">
+      <section id="current" class="card hero skeleton" aria-live="polite">
+        <div class="hero-left">
+          <div class="temp-line">
+            <span id="temp" class="temp">--°</span>
+            <span id="cond" class="cond">Loading…</span>
+          </div>
+          <div class="meta">
+            <span id="loc">—</span>
+            <span class="dot">•</span>
+            <span id="feels">Feels like —</span>
+          </div>
+          <ul class="stats">
+            <li>H <span id="high">—</span> · L <span id="low">—</span></li>
+            <li>Humidity <span id="humidity">—%</span></li>
+            <li>Wind <span id="wind">—</span></li>
+            <li>UV <span id="uv">—</span></li>
+          </ul>
+        </div>
+        <div class="hero-right">
+          <img id="icon" class="wx-icon" alt="" width="140" height="140" />
+          <div class="time">
+            <span id="localtime">—</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="card section">
+        <div class="section-head">
+          <h2>Next hours</h2>
+          <span id="precipSummary" class="muted"></span>
+        </div>
+        <div id="hourly" class="hourly scroller skeleton" aria-label="Hourly forecast"></div>
+      </section>
+
+      <section class="card section">
+        <div class="section-head">
+          <h2>7‑day forecast</h2>
+        </div>
+        <div id="daily" class="daily grid skeleton" aria-label="Daily forecast"></div>
+      </section>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+      <div class="left">
+        <span class="muted">Data: OpenWeather</span>
+        <span id="offlineBadge" class="badge warn" hidden>Offline</span>
+      </div>
+      <div class="right">
+        <a href="https://openweathermap.org/" target="_blank" rel="noreferrer">API</a>
+        <a href="https://github.com/yourname/stratus" target="_blank" rel="noreferrer">Source</a>
+      </div>
+    </footer>
+  </div>
+
+  <script src="app.js" type="module" defer></script>
+</body>
+</html>
